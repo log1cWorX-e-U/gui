@@ -1,5 +1,7 @@
 #pragma once
 
+/// \file gui.h
+/// \brief Sammel-Header der gui-Bibliothek (zieht alle Einzel-Header ein).
 #include "application.h"
 #include "main_window.h"
 #include "drawing_area.h"
