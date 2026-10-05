@@ -2,11 +2,12 @@
 
 /// \file main_window.h
 /// \brief Hauptfenster mit Menueleiste und Tastatur-Ereignissen.
+#include <api/api.h>
 #include <gdk/gdkkeysyms.h>
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "application.h"
+#include "application.h" // IWYU pragma: keep.
 
 /// \brief Zustand eines Hauptfensters samt Menue und Tastatur-Controller.
 typedef struct gui_main_window
@@ -29,7 +30,7 @@ typedef struct gui_main_window
 /// \return das neue Fenster-Widget.
 /// \note Ruft den gui_main_window-Callback mit GE_BEFORE_PRESENT zwischen Aufbau und
 ///       Darstellung sowie mit GE_AFTER_PRESENT danach auf.
-GtkWidget* gui_main_window_create(GtkApplication* app, uint32_t width_pix, uint32_t height_pix, void* user_data,
+GtkWidget* gui_main_window_create(GtkApplication* app, uint32_t width_pix, uint32_t height_pix, user_data_stack_t user_data,
 	bool show_menu, bool resizeable);
 /// \brief Legt ein Untermenue an und haengt es an die Menueleiste.
 /// \param menu_bar Wurzel der Menueleiste.

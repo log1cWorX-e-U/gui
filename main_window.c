@@ -88,7 +88,7 @@ static GMenu* _gui_main_window_create_menu_bar(GtkApplication* app, GtkApplicati
     return menu_bar;
 }
 
-GtkWidget* gui_main_window_create(GtkApplication* app, uint32_t width_pix, uint32_t height_pix, void* user_data,
+GtkWidget* gui_main_window_create(GtkApplication* app, uint32_t width_pix, uint32_t height_pix, user_data_stack_t user_data,
 	bool show_menu, bool resizeable)
 {
 	GtkWidget* main_window = gtk_application_window_new(app);
@@ -121,11 +121,11 @@ GtkWidget* gui_main_window_create(GtkApplication* app, uint32_t width_pix, uint3
 
 	if (gui_main_window != NULL)
 	{
-	 struct gui_event e = {0};
-	 e.type = GE_BEFORE_PRESENT;
-	 LOG(MODULE_ID, "main window design phase begin.");
-	 gui_main_window(core, &e);
-	 LOG(MODULE_ID, "main window design phase end.");
+		struct gui_event e = {0};
+		e.type = GE_BEFORE_PRESENT;
+		LOG(MODULE_ID, "main window design phase begin.");
+		gui_main_window(core, &e);
+		LOG(MODULE_ID, "main window design phase end.");
 	}
 
 	#ifdef USE_GTK3
@@ -135,11 +135,11 @@ GtkWidget* gui_main_window_create(GtkApplication* app, uint32_t width_pix, uint3
 
 	if (gui_main_window != NULL)
 	{
-	 struct gui_event e = {0};
-	 e.type = GE_AFTER_PRESENT;
-	 LOG(MODULE_ID, "main window initializing phase begin.");
-	 gui_main_window(core, &e);
-	 LOG(MODULE_ID, "main window initializing phase end.");
+		struct gui_event e = {0};
+		e.type = GE_AFTER_PRESENT;
+		LOG(MODULE_ID, "main window initializing phase begin.");
+		gui_main_window(core, &e);
+		LOG(MODULE_ID, "main window initializing phase end.");
 	}
 	_gui_add_widget_to_internal_list(main_window);
 	return main_window;
