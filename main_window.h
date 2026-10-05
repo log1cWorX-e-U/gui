@@ -17,7 +17,7 @@ typedef struct gui_main_window
 	GtkWidget* main_window;   ///< das Fenster-Widget.
 	GMenu* menu_bar;   ///< Wurzel der Menueleiste.
 	GMenu* file_menu;   ///< Standard-Untermenue "File".
-	void* user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
+	user_data_t user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
 } *gui_main_window_t;
 
 /// \brief Erzeugt ein Hauptfenster und praesentiert es.

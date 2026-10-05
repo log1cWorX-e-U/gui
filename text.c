@@ -28,7 +28,7 @@ static void _gui_text_changed(GtkEditable* self, gpointer user_data)
     }
 }
 
-GtkWidget* gui_text_create(uint32_t id, float alignment, const char* regular_expression, const char* value, void* user_data)
+GtkWidget* gui_text_create(uint32_t id, float alignment, const char* regular_expression, const char* value, user_data_stack_t user_data)
 {
     GtkWidget* text = gtk_text_new();
 	g_object_set_data(G_OBJECT(text), "core", malloc(sizeof(struct _gui_text)));

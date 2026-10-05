@@ -3,7 +3,7 @@
 extern void _gui_add_widget_to_internal_list(GtkWidget* widget);
 extern void* _gui_get_core(GtkWidget* widget);
 
-GtkWidget* gui_separator_create(uint32_t id, bool horizontal, void* user_data)
+GtkWidget* gui_separator_create(uint32_t id, bool horizontal, user_data_stack_t user_data)
 {
     GtkWidget* separator = gtk_separator_new(horizontal ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
     g_object_set_data(G_OBJECT(separator), "core", malloc(sizeof(struct _gui_separator)));

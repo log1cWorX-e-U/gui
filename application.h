@@ -2,13 +2,14 @@
 
 /// \file application.h
 /// \brief Einstiegspunkt: startet die GTK-Anwendung und ihre Hauptschleife.
+#include <api/api.h>
 #include <gtk/gtk.h>
 
 /// \brief Laufende GTK-Anwendung samt frei verwendbaren Nutzerdaten.
 typedef struct gui_application
 {
 	GtkApplication* app;   ///< zugrundeliegende GTK-Anwendung.
-	void* user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
+	user_data_t user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
 } *gui_application_t;
 
 /// \brief Erzeugt die GTK-Anwendung und fuehrt die Hauptschleife aus.
@@ -17,4 +18,4 @@ typedef struct gui_application
 /// \param argv Argumentvektor aus main().
 /// \param user_data frei verwendbarer Zeiger; spaeter via gui_application_t erreichbar.
 /// \return GTK-Statuscode (0 bei normalem Ende).
-int32_t gui_application_run(const char* name, int argc, char **argv, void* user_data);
+int32_t gui_application_run(const char* name, int argc, char **argv, user_data_stack_t user_data);

@@ -2,6 +2,7 @@
 
 /// \file separator.h
 /// \brief Trennlinie zwischen Widgets.
+#include <api/api.h>
 #include <gtk/gtk.h>
 #include <stdint.h>
 
@@ -10,7 +11,7 @@ typedef struct _gui_separator
 {
     GtkWidget* separator;   ///< das Trennlinien-Widget.
     uint32_t id;   ///< vom Aufrufer vergebene Kennung.
-    void* user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
+    user_data_t user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
 } *gui_separator_t;
 
 /// \brief Erzeugt eine waagerechte oder senkrechte Trennlinie.

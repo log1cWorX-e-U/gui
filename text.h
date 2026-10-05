@@ -2,6 +2,7 @@
 
 /// \file text.h
 /// \brief Eingabefeld mit regelbasierter Zeichenfilterung.
+#include <api/api.h>
 #include <gtk/gtk.h>
 
 /// \brief Regulaerer Ausdruck fuer nicht-negative ganze Zahlen.
@@ -41,7 +42,7 @@ typedef struct _gui_text
     GtkWidget* text;   ///< das Eingabefeld-Widget.
     uint32_t id;   ///< vom Aufrufer vergebene Kennung.
     const char* regular_expression;   ///< Ausdruck zur Zeichenfilterung.
-    void* user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
+    user_data_t user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
 } *gui_text_t;
 
 /// \brief Erzeugt ein Eingabefeld mit Zeichenfilter und Anfangswert.
@@ -51,7 +52,7 @@ typedef struct _gui_text
 /// \param value Anfangstext.
 /// \param user_data frei verwendbarer Zeiger des Aufrufers.
 /// \return das neue Eingabefeld-Widget.
-GtkWidget* gui_text_create(uint32_t id, float alignment, const char* white_list, const char* value, void* user_data);
+GtkWidget* gui_text_create(uint32_t id, float alignment, const char* white_list, const char* value, user_data_stack_t user_data);
 /// \brief Liest den Feldinhalt als Zahl.
 /// \param text das Eingabefeld.
 /// \return der Inhalt als double (atof).

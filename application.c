@@ -47,7 +47,7 @@ static void _gui_application_shutdown(GApplication* app, gpointer user_data)
 	}
 }
 
-int32_t gui_application_run(const char* name, int argc, char **argv, void* user_data)
+int32_t gui_application_run(const char* name, int argc, char **argv, user_data_stack_t user_data)
 {
     LOG(MODULE_ID, "Hello World!");
 	static struct gui_application core = {0};

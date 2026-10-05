@@ -2,6 +2,7 @@
 
 /// \file switch.h
 /// \brief Umschalter (an/aus).
+#include <api/api.h>
 #include <gtk/gtk.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -11,7 +12,7 @@ typedef struct _gui_switch
 {
     GtkWidget* switch_widget;   ///< das Umschalter-Widget.
     uint32_t id;   ///< vom Aufrufer vergebene Kennung.
-    void* user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
+    user_data_t user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
 } *gui_switch_t;
 
 /// \brief Erzeugt einen Umschalter.
@@ -19,7 +20,7 @@ typedef struct _gui_switch
 /// \param active Anfangszustand.
 /// \param user_data frei verwendbarer Zeiger des Aufrufers.
 /// \return das neue Umschalter-Widget.
-GtkWidget* gui_switch_create(uint32_t id, bool active, void* user_data);
+GtkWidget* gui_switch_create(uint32_t id, bool active, user_data_stack_t user_data);
 /// \brief Aktueller Zustand eines Umschalters.
 /// \param switch_widget der Umschalter.
 /// \return true, wenn eingeschaltet.

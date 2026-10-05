@@ -2,6 +2,7 @@
 
 /// \file button.h
 /// \brief Druck-, Umschalt-, Auswahl- und Drehknopf-Widgets.
+#include <api/api.h>
 #include <gtk/gtk.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -11,7 +12,7 @@ typedef struct _gui_button
 {
     GtkWidget* button;   ///< das Button-Widget.
     uint32_t id;   ///< vom Aufrufer vergebene Kennung.
-    void* user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
+    user_data_t user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
 } *gui_button_t;
 
 /// \brief Konfiguration fuer gui_button_create.
@@ -40,13 +41,13 @@ typedef struct gui_spin_button_configuration
 /// \param user_data frei verwendbarer Zeiger des Aufrufers.
 /// \return das neue Button-Widget.
 /// \note Der gui_button-Callback wird mit GE_B_CLICKED bzw. GE_B_TOGGLED aufgerufen.
-GtkWidget* gui_button_create(uint32_t id, gui_button_configuration_t configuration, void* user_data);
+GtkWidget* gui_button_create(uint32_t id, gui_button_configuration_t configuration, user_data_stack_t user_data);
 /// \brief Erzeugt einen Auswahlknopf aus einer Textliste.
 /// \param id vom Aufrufer vergebene Kennung.
 /// \param strings NULL-terminierte Liste der Auswahltexte.
 /// \param user_data frei verwendbarer Zeiger des Aufrufers.
 /// \return das neue Auswahl-Widget.
-GtkWidget* gui_button_drop_down_create(uint32_t id, const char* strings[], void* user_data);
+GtkWidget* gui_button_drop_down_create(uint32_t id, const char* strings[], user_data_stack_t user_data);
 /// \brief Index der aktuellen Auswahl.
 /// \param drop_down_button der Auswahlknopf.
 /// \return Index des gewaehlten Eintrags.
@@ -57,7 +58,7 @@ int32_t gui_button_drop_down_get_selection(GtkWidget* drop_down_button);
 /// \param user_data frei verwendbarer Zeiger des Aufrufers.
 /// \return das neue Drehknopf-Widget.
 /// \note Der gui_button-Callback wird bei Wertänderung mit GE_B_SELECTED aufgerufen.
-GtkWidget* gui_button_spin_create(uint32_t id, gui_spin_button_configuration_t configuration, void* user_data);
+GtkWidget* gui_button_spin_create(uint32_t id, gui_spin_button_configuration_t configuration, user_data_stack_t user_data);
 /// \brief Uebernimmt eine neue Konfiguration fuer einen Drehknopf.
 /// \param spin_button der Drehknopf.
 /// \param configuration neue Wertebereichs- und Schrittweitenwerte.

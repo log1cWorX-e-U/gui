@@ -2,6 +2,7 @@
 
 /// \file dialog.h
 /// \brief Eigenstaendiges Fenster fuer Dialoge.
+#include <api/api.h>
 #include <gtk/gtk.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -11,7 +12,7 @@ typedef struct _gui_dialog
 {
     GtkWidget* dialog;   ///< das Dialog-Fenster-Widget.
     uint32_t id;   ///< vom Aufrufer vergebene Kennung.
-    void* user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
+    user_data_t user_data;   ///< frei verwendbarer Zeiger des Aufrufers.
 } *gui_dialog_t;
 
 /// \brief Erzeugt ein anfangs modales Dialog-Fenster.
@@ -22,7 +23,7 @@ typedef struct _gui_dialog
 /// \param user_data frei verwendbarer Zeiger des Aufrufers.
 /// \return das neue Fenster-Widget.
 /// \note Der gui_dialog-Callback wird mit GE_DIALOG_DESTROY bzw. GE_CLOSE_REQUEST aufgerufen.
-GtkWidget* gui_dialog_create(uint32_t id, const char* title, uint32_t width, uint32_t height, void* user_data);
+GtkWidget* gui_dialog_create(uint32_t id, const char* title, uint32_t width, uint32_t height, user_data_stack_t user_data);
 /// \brief Setzt den Fenstertitel.
 /// \param dialog der Dialog.
 /// \param title neuer Titel.

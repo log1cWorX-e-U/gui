@@ -36,7 +36,7 @@ static gboolean _gui_dialog_close_request(GtkWindow* self, gpointer user_data)
     return close;
 }
 
-GtkWidget* gui_dialog_create(uint32_t id, const char* title, uint32_t width, uint32_t height, void* user_data)
+GtkWidget* gui_dialog_create(uint32_t id, const char* title, uint32_t width, uint32_t height, user_data_stack_t user_data)
 {
     GtkWidget* dialog = gtk_window_new();
     g_object_set_data(G_OBJECT(dialog), "core", malloc(sizeof(struct _gui_dialog)));

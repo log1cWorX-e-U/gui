@@ -3,7 +3,7 @@
 extern void _gui_add_widget_to_internal_list(GtkWidget* widget);
 extern void* _gui_get_core(GtkWidget* widget);
 
-GtkWidget* gui_switch_create(uint32_t id, bool active, void* user_data)
+GtkWidget* gui_switch_create(uint32_t id, bool active, user_data_stack_t user_data)
 {
     GtkWidget* switch_widget = gtk_switch_new();
     gtk_switch_set_active(GTK_SWITCH(switch_widget), active);
